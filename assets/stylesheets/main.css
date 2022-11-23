@@ -1,0 +1,46 @@
+body {
+  background: black;
+  box-shadow: inset 0px 0px 50px 10px rgba(255, 255, 255, 0.25);
+  color: white;
+  position: relative;
+}
+
+.icon {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+
+  width: 24px;
+  height: 24px;
+}
+
+.ui {
+  background: rgba(111, 255, 229, 0.25);
+  width: 90%;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.header {
+  top: 12px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer {
+  bottom: 12px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
