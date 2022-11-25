@@ -32,7 +32,7 @@
 
 .ship {
   background: rgba(215, 65, 167, 0.25);
-  border: 2px solid #D741A7;
+  border: 2px solid rgba(215, 65, 167, 1);
   box-shadow: 0px 0px 25px 10px rgba(215, 65, 167, 0.25);
 
   width: 14px;
