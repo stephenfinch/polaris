@@ -30,20 +30,12 @@ class Polaris extends Circle {
     this.damage = 1
     this.reload = 1
     this.bullets = []
-  }
 
-  update(ships) {
-    if (!this.readyToShoot()) return
-
-    const nextTarget = this.getNextTarget(ships)
-    if (!this.targetInRange(nextTarget)) return
-
-    // this.shoot(nextTarget)
-    console.log('shoot')
+    this._readyToShoot = true
   }
 
   readyToShoot() {
-    return true
+    return this._readyToShoot
   }
 
   getNextTarget(ships) {
@@ -62,8 +54,26 @@ class Polaris extends Circle {
     return this.collision(ship.pos.x, ship.pos.y, ship.r, 100)
   }
 
-  shoot() {
-    this.bullets.push(new Bullet())
+  shoot(target) {
+    this._readyToShoot = false
+    this.bullets.push(new Bullet(target))
+  }
+
+  updateBullets() {
+    this.bullets.forEach((bullet) => {
+      bullet.update()
+      bullet.show()
+    })
+  }
+
+  update(ships) {
+    const nextTarget = this.getNextTarget(ships)
+
+    if (this.readyToShoot() && this.targetInRange(nextTarget)) {
+      this.shoot(nextTarget)
+    }
+
+    this.updateBullets()
   }
 
   show() {
@@ -78,15 +88,16 @@ class Polaris extends Circle {
 }
 
 class Bullet extends Circle {
-  constructor() {
+  constructor(target) {
     super()
     this.circleDiv.addClass('bullet')
     this.pos = createVector(width / 2, height / 2)
     this.r = 2
+    this.target = target
   }
 
-  update(targetVector) {
-    const setpoint = targetVector
+  update() {
+    const setpoint = this.target.pos.copy()
     const vel = setpoint.sub(this.pos)
     vel.setMag(3)
     this.pos.add(vel)
