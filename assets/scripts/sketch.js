@@ -1,8 +1,18 @@
+let polaris
+let ships = []
+
 function setup() {
   createCanvas(windowWidth, windowHeight)
-  background(transparent)
+
+  polaris = new Polaris()
+  ships.push(new Ship(), new Ship(), new Ship())
 }
 
 function draw() {
-  // background(220)
+  polaris.show()
+
+  ships.forEach((ship) => {
+    ship.update()
+    ship.show()
+  })
 }

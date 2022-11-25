@@ -1,31 +1,39 @@
 class Circle {
-  constructor(id, x, y, r) {
-    this._id = id
-    this._x = x
-    this._y = y
-    this._r = r
-    this._div = document.createElement('div')
+  constructor() {
+    this.circleDiv = createDiv()
+    this.circleDiv.addClass('circle')
   }
+}
 
-  update() {
-    console.log('update')
-    const oldTop = this._div.style.top
-    const newTop = this.pixelToNumber(oldTop) + 1
-    this._div.style.top = this.numberToPixel(newTop)
+class Polaris extends Circle {
+  constructor() {
+    super()
+    this.circleDiv.addClass('polaris')
+    this.circleDiv.center()
   }
 
   show() {
-    this._div.setAttribute('id', this._id)
-    this._div.classList.add('circle')
+    this.circleDiv
+  }
+}
 
-    map.appendChild(this._div)
+class Ship extends Circle {
+  constructor() {
+    super()
+    this.circleDiv.addClass('ship')
+    this.circleDiv.addClass('center')
+    this.pos = createVector(random(0, width), random(0, height))
   }
 
-  pixelToNumber(pixels) {
-    return Number(pixels.slice(0, -2))
+  update() {
+    const center = createVector(width / 2, height / 2)
+    const vel = center.sub(this.pos)
+    vel.setMag(1)
+    this.pos.add(vel)
   }
 
-  numberToPixel(number) {
-    return `${number}px`
+  show() {
+    this.circleDiv.position(this.pos.x, this.pos.y)
+    this.circleDiv
   }
 }

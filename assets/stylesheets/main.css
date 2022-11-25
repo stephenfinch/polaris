@@ -3,6 +3,8 @@ body {
   box-shadow: inset 0px 0px 50px 10px rgba(255, 255, 255, 0.25);
   color: white;
   position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .icon {
@@ -24,6 +26,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
+  z-index: 100;
 }
 
 .header {
