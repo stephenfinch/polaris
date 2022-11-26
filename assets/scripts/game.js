@@ -32,6 +32,15 @@ class Game {
     })
   }
 
+  buyReload() {
+    if (this.cash >= 2) {
+      this.polaris.upgradeReload()
+      this.cash -= 2
+    }
+
+    this.updateCash()
+  }
+
   update() {
     this.updateCash()
     this.updateShips()

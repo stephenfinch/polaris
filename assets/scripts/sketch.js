@@ -10,3 +10,7 @@ function draw() {
   game.update()
   game.show()
 }
+
+function buyReload() {
+  game.buyReload()
+}

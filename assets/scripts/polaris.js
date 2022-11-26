@@ -12,6 +12,10 @@ class Polaris extends Circle {
     this._readyToShoot = true
   }
 
+  upgradeReload() {
+    this.reload += 0.1
+  }
+
   readyToShoot() {
     return this._readyToShoot
   }
