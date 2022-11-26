@@ -25,7 +25,7 @@
 
 .bullet {
   background: #6FFFE5;
-  border: 1px solid #6FFFE5;
+  border: 1px solid rgb(111, 255, 229);
   box-shadow: 0px 0px 25px 5px #6FFFE5;
 
   width: 4px;

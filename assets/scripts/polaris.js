@@ -67,7 +67,7 @@ class Polaris extends Circle {
   show() {
     // TODO: draw a better range circle
     clear()
-    stroke('rgba(0, 255, 0, 0.25)')
+    stroke('rgba(111, 255, 229, 0.25)')
     noFill()
     circle(this.pos.x, this.pos.y, this.range * 2)
 
