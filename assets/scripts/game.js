@@ -3,6 +3,15 @@ class Game {
     this.polaris = new Polaris()
     this.ships = []
     this.activeShips
+    this.cash = 0
+  }
+
+  updateCash() {
+    this.ships.forEach((ship) => {
+      if (ship.dead()) this.cash += ship.reward
+    })
+
+    document.getElementById('cash').textContent = `Cash: ${this.cash}`
   }
 
   updateShips() {
@@ -24,6 +33,7 @@ class Game {
   }
 
   update() {
+    this.updateCash()
     this.updateShips()
     this.polaris.update(this.activeShips)
   }

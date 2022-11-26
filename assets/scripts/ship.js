@@ -8,6 +8,7 @@ class Ship extends Circle {
     this.health = 1
     this.incomingDamage = 0
     this.fadeValue = 1
+    this.reward = 1
   }
 
   startingVector() {
