@@ -8,8 +8,12 @@ class Shop {
     this.damagePriceIncrement = 2
   }
 
+  canBuyReload() {
+    return this.game.cash >= this.reloadPrice
+  }
+
   buyReload() {
-    if (this.game.cash >= this.reloadPrice) {
+    if (this.canBuyReload()) {
       this.polaris.reload += 0.1
       this.game.cash -= this.reloadPrice
       this.reloadPrice = Math.round(this.reloadPrice * this.reloadPriceIncrement)
@@ -19,8 +23,12 @@ class Shop {
     game.updateCash()
   }
 
+  canBuyDamage() {
+    return this.game.cash >= this.damagePrice
+  }
+
   buyDamage() {
-    if (this.game.cash >= this.damagePrice) {
+    if (this.canBuyDamage()) {
       this.polaris.damage += 0.1
       this.game.cash -= this.damagePrice
       this.damagePrice = Math.round(this.damagePrice * this.damagePriceIncrement)

@@ -18,9 +18,14 @@
   user-select: none;
 }
 
-.btn:active {
-  transform: translateY(2px);
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.15);
+.btn-disabled {
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.25);
   box-shadow: none;
+  pointer-events: none;
+}
+
+.btn:active {
+  background: rgba(111, 255, 229, 0.25);
+  box-shadow: 0px 0px 10px 0px #6FFFE5;
 }

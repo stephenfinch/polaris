@@ -38,30 +38,22 @@
     <h1 class="title">Polaris</h1>
     <img src="assets/icons/settings.svg" class="icon" alt="settings">
   </div>
-  <main></main>
   <div class="ui footer">
-    <button id="reload-button" class="btn" onclick="buyReload()">
+    <button id="reload-button" class="btn btn-disabled" onclick="buyReload()">
       <span>Reload</span>
       <div class="flex col">
-        <span class="soft-text">1.0</span>
-        <span class="soft-text">($1)</span>
+        <span class="small-text">1.0</span>
+        <span class="small-text">$1</span>
       </div>
     </button>
-    <button id="damage-button" class="btn" onclick="buyDamage()">
+    <button id="damage-button" class="btn btn-disabled" onclick="buyDamage()">
       <span>Damage</span>
       <div class="flex col">
-        <span class="soft-text">1.0</span>
-        <span class="soft-text">($1)</span>
+        <span class="small-text">1.0</span>
+        <span class="small-text">$1</span>
       </div>
     </button>
     <button id="full-screen">Full Screen</button>
-    <!-- <button id="bonus-button" class="btn">
-      <span>Bonus</span>
-      <div class="flex col">
-        <span class="soft-text">1.0</span>
-        <span class="soft-text">($1)</span>
-      </div>
-    </button> -->
   </div>
   <div id="banner" class="banner" onclick="handleBannerClick()">
     <h2 class="banner-title">Defend the star Polaris</h2>

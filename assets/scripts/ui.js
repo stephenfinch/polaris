@@ -1,17 +1,21 @@
 function updateUI(game) {
-  document.getElementById('reload-button').innerHTML = `
+  const reloadButton = document.getElementById('reload-button')
+  game.shop.canBuyReload() ? reloadButton.classList.remove('btn-disabled') : reloadButton.classList.add('btn-disabled')
+  reloadButton.innerHTML = `
       <span>Reload</span>
       <div class="flex col">
-        <span class="soft-text">${game.polaris.reload.toFixed(1)}</span>
-        <span class="soft-text">($${game.shop.reloadPrice.toFixed(0)})</span>
+        <span class="small-text">${game.polaris.reload.toFixed(1)}</span>
+        <span class="small-text">$${game.shop.reloadPrice.toFixed(0)}</span>
       </div>
     `
 
-  document.getElementById('damage-button').innerHTML = `
+  const damageButton = document.getElementById('damage-button')
+  game.shop.canBuyDamage() ? damageButton.classList.remove('btn-disabled') : damageButton.classList.add('btn-disabled')
+  damageButton.innerHTML = `
     <span>Damage</span>
     <div class="flex col">
-      <span class="soft-text">${game.polaris.damage.toFixed(1)}</span>
-      <span class="soft-text">($${game.shop.damagePrice.toFixed(0)})</span>
+      <span class="small-text">${game.polaris.damage.toFixed(1)}</span>
+      <span class="small-text">$${game.shop.damagePrice.toFixed(0)}</span>
     </div>
   `
 
