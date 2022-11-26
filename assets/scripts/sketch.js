@@ -1,9 +1,10 @@
-let game
+let game, banner
 
 function setup() {
   createCanvas(windowWidth, windowHeight)
 
   game = new Game()
+  noLoop()
 }
 
 function draw() {
@@ -19,9 +20,19 @@ function buyDamage() {
   game.shop.buyDamage()
 }
 
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('DOMContentLoaded', (_event) => {
   const button = document.getElementById('full-screen')
   button.addEventListener('click', () => {
     document.body.requestFullscreen()
   })
 })
+
+function handleBannerClick() {
+  if (game.isOver) {
+    game.clear()
+    game = new Game()
+  }
+  loop()
+
+  document.getElementById('banner').classList.add('banner-fade')
+}

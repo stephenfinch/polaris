@@ -50,6 +50,11 @@ class Polaris extends Circle {
     })
   }
 
+  clear() {
+    this.bullets.forEach((bullet) => bullet.clear())
+    this.circleDiv.remove()
+  }
+
   update(ships) {
     const nextTarget = this.getNextTarget(ships)
 

@@ -20,4 +20,8 @@ class Circle {
 
     return Math.sqrt(a * a + b * b)
   }
+
+  clear() {
+    this.circleDiv.remove()
+  }
 }

@@ -4,6 +4,8 @@ class Game {
     this.shop = new Shop(this)
     this.ships = []
     this.activeShips
+    this.isOver = false
+    this.wave = 1
     this.cash = 0
     updateUI(this)
   }
@@ -27,16 +29,27 @@ class Game {
     this.ships.forEach((ship) => {
       ship.update()
       ship.show()
+    })
+  }
+
+  checkForGameOver() {
+    this.ships.forEach((ship) => {
       if (this.polaris.collision(ship.pos.x, ship.pos.y, ship.r, this.polaris.r)) {
-        console.log('game over')
+        this.isOver = true
         noLoop()
       }
     })
   }
 
+  clear() {
+    this.ships.forEach((ship) => ship.clear())
+    this.polaris.clear()
+  }
+
   update() {
     this.updateCash()
     this.updateShips()
+    this.checkForGameOver()
     this.polaris.update(this.activeShips)
     updateUI(this)
   }
