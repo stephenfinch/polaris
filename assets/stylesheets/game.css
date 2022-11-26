@@ -11,6 +11,11 @@
   position: absolute;
   border-radius: 50%;
 
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
   top: -100px;
 }
 
