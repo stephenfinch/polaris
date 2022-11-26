@@ -12,5 +12,9 @@ function draw() {
 }
 
 function buyReload() {
-  game.buyReload()
+  game.shop.buyReload()
+}
+
+function buyDamage() {
+  game.shop.buyDamage()
 }
