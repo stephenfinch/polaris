@@ -7,7 +7,6 @@ class Ship extends Circle {
     this.r = 7
     this.health = 1
     this.incomingDamage = 0
-    this.fadeValue = 1
     this.reward = 1
   }
 
@@ -25,7 +24,13 @@ class Ship extends Circle {
   takeHit(damage) {
     this.health -= damage
     this.incomingDamage -= damage
-    if (this.health <= 0) this.active = false
+    if (this.health <= 0) {
+      this.active = false
+      this.moneyDiv = createDiv('$1')
+      this.moneyDiv.addClass('money')
+      this.moneyDiv.addClass('center')
+      this.moneyDiv.position(this.pos.x, this.pos.y)
+    }
   }
 
   expectHit(damage) {
@@ -40,28 +45,27 @@ class Ship extends Circle {
   }
 
   fade() {
-    if (this.fadeValue < 0) return
+    this.moneyDiv.addClass('fade')
+    this.circleDiv.addClass('fade-ship')
 
-    this.fadeValue -= 0.1
-    this.circleDiv.style('background', `rgba(215, 65, 167, ${this.fadeValue / 4})`)
-    this.circleDiv.style('border', `2px solid rgba(215, 65, 167, ${this.fadeValue})`)
-    this.circleDiv.style('box-shadow', `0px 0px 25px 10px rgba(215, 65, 167, ${this.fadeValue / 4})`)
-    this.circleDiv.style('width', `${this.r * 2 + 30 - this.fadeValue * 30}px`)
-    this.circleDiv.style('height', `${this.r * 2 + 30 - this.fadeValue * 30}px`)
+    if (Number(this.moneyDiv.style('opacity')) <= 0) {
+      this.dead = true
+    }
   }
 
   doomed() {
     return this.health - this.incomingDamage <= 0
   }
 
-  dead() {
-    return this.fadeValue <= 0
+  clear() {
+    this.circleDiv.remove()
+    this.moneyDiv.remove()
   }
 
   update() {
     this.active ? this.move() : this.fade()
 
-    if (this.dead()) this.circleDiv.remove()
+    if (this.dead) this.clear()
   }
 
   show() {

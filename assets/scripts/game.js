@@ -12,14 +12,14 @@ class Game {
 
   updateCash() {
     this.ships.forEach((ship) => {
-      if (ship.dead()) this.cash += ship.reward
+      if (ship.dead) this.cash += ship.reward
     })
 
     document.getElementById('cash').textContent = `Cash: ${this.cash}`
   }
 
   updateShips() {
-    this.ships = this.ships.filter((ship) => !ship.dead())
+    this.ships = this.ships.filter((ship) => !ship.dead)
     this.activeShips = this.ships.filter((ship) => !ship.doomed())
 
     if (this.ships.length < 5) {
