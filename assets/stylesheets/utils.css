@@ -9,3 +9,8 @@
 .center {
   transform: translate(-50%, -50%);
 }
+
+.soft-text {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}

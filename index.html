@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/stylesheets/main.css">
+  <link rel="stylesheet" href="assets/stylesheets/button.css">
   <link rel="stylesheet" href="assets/stylesheets/game.css">
   <link rel="stylesheet" href="assets/stylesheets/utils.css">
   <link rel="stylesheet" href="assets/stylesheets/reset.css">
@@ -32,16 +33,34 @@
   <div class="ui header">
     <div class="flex col">
       <span id="cash">Cash: $12</span>
-      <span>Wave: 3</span>
+      <span>Wave: 1</span>
     </div>
     <h1 class="title">Polaris</h1>
-    <img src="assets/icons/settings.svg" class="icon btn" alt="settings">
+    <img src="assets/icons/settings.svg" class="icon" alt="settings">
   </div>
   <main></main>
   <div class="ui footer">
-    <button>Reload</button>
-    <button>Damage</button>
-    <button>Bonus</button>
+    <button id="reload-button" class="btn">
+      <span>Reload</span>
+      <div class="flex col">
+        <span class="soft-text">1.0</span>
+        <span class="soft-text">($1)</span>
+      </div>
+    </button>
+    <button id="damage-button" class="btn">
+      <span>Damage</span>
+      <div class="flex col">
+        <span class="soft-text">1.0</span>
+        <span class="soft-text">($1)</span>
+      </div>
+    </button>
+    <button id="bonus-button" class="btn">
+      <span>Bonus</span>
+      <div class="flex col">
+        <span class="soft-text">1.0</span>
+        <span class="soft-text">($1)</span>
+      </div>
+    </button>
   </div>
   <script src="assets/scripts/circle.js"></script>
   <script src="assets/scripts/polaris.js"></script>
