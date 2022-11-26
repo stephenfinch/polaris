@@ -12,10 +12,10 @@ class Ship extends Circle {
 
   startingVector() {
     const startingOptions = [
-      createVector(width + 10, random(height)),
-      createVector(-10, random(height)),
-      createVector(random(width), height + 10),
-      createVector(random(width), -10),
+      createVector(width + random(10, 100), random(height)),
+      createVector(random(-10, -100), random(height)),
+      createVector(random(width), height + random(10, 100)),
+      createVector(random(width), random(-10, -100)),
     ]
 
     return startingOptions[Math.floor(Math.random() * startingOptions.length)]
@@ -45,8 +45,8 @@ class Ship extends Circle {
     this.circleDiv.style('background', `rgba(215, 65, 167, ${this.fadeValue / 4})`)
     this.circleDiv.style('border', `2px solid rgba(215, 65, 167, ${this.fadeValue})`)
     this.circleDiv.style('box-shadow', `0px 0px 25px 10px rgba(215, 65, 167, ${this.fadeValue / 4})`)
-    this.circleDiv.style('width', `${34 - this.fadeValue * 20}px`)
-    this.circleDiv.style('height', `${34 - this.fadeValue * 20}px`)
+    this.circleDiv.style('width', `${this.r * 2 + 30 - this.fadeValue * 30}px`)
+    this.circleDiv.style('height', `${this.r * 2 + 30 - this.fadeValue * 30}px`)
   }
 
   doomed() {
