@@ -18,3 +18,10 @@ function buyReload() {
 function buyDamage() {
   game.shop.buyDamage()
 }
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  const button = document.getElementById('full-screen')
+  button.addEventListener('click', () => {
+    document.body.requestFullscreen()
+  })
+})
