@@ -11,7 +11,9 @@ function setup() {
 }
 
 function draw() {
-  polaris.update(ships)
+  ships = ships.filter(ship => !ship.dead())
+  activeShips = ships.filter((ship) => !ship.doomed())
+  polaris.update(activeShips)
   polaris.show()
 
   ships.forEach((ship) => {

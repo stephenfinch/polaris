@@ -1,11 +1,11 @@
 class Bullet extends Circle {
-  constructor(target) {
+  constructor(target, damage) {
     super()
     this.circleDiv.addClass('bullet')
     this.pos = createVector(width / 2, height / 2)
     this.r = 2
     this.target = target
-    this.damage = 1
+    this.damage = damage
     this.active = true
   }
 

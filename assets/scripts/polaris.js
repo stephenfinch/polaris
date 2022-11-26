@@ -5,7 +5,9 @@ class Polaris extends Circle {
     this.r = 20
     this.damage = 1
     this.reload = 1
+    this.lastShot = Date.now()
     this.bullets = []
+    this.range = 150
 
     this._readyToShoot = true
   }
@@ -27,13 +29,17 @@ class Polaris extends Circle {
   }
 
   targetInRange(ship) {
-    return this.collision(ship.pos.x, ship.pos.y, ship.r, 100)
+    if (!ship) return
+
+    return this.collision(ship.pos.x, ship.pos.y, ship.r, this.range)
   }
 
   shoot(target) {
-    const bullet = new Bullet(target)
+    const bullet = new Bullet(target, this.damage)
+    target.expectHit(bullet.damage)
     this.bullets.push(bullet)
     this._readyToShoot = false
+    this.lastShot = Date.now()
   }
 
   updateBullets() {
@@ -50,6 +56,10 @@ class Polaris extends Circle {
       this.shoot(nextTarget)
     }
 
+    if (Date.now() - this.lastShot > 1000 / this.reload) {
+      this._readyToShoot = true
+    }
+
     this.updateBullets()
   }
 
@@ -58,7 +68,7 @@ class Polaris extends Circle {
     clear()
     stroke('rgba(0, 255, 0, 0.25)')
     noFill()
-    circle(this.pos.x, this.pos.y, 200)
+    circle(this.pos.x, this.pos.y, this.range * 2)
 
     this.circleDiv.position(this.pos.x, this.pos.y)
   }

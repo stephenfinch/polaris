@@ -6,12 +6,18 @@ class Ship extends Circle {
     this.pos = createVector(random(0, width), random(0, height))
     this.r = 7
     this.health = 1
+    this.incomingDamage = 0
     this.fadeValue = 1
   }
 
   takeHit(damage) {
     this.health -= damage
+    this.incomingDamage -= damage
     if (this.health <= 0) this.active = false
+  }
+
+  expectHit(damage) {
+    this.incomingDamage += damage
   }
 
   move() {
@@ -22,7 +28,7 @@ class Ship extends Circle {
   }
 
   fade() {
-    if (this.dead()) return
+    if (this.fadeValue < 0) return
 
     this.fadeValue -= 0.1
     this.circleDiv.style('background', `rgba(215, 65, 167, ${this.fadeValue / 4})`)
@@ -32,8 +38,12 @@ class Ship extends Circle {
     this.circleDiv.style('height', `${34 - this.fadeValue * 20}px`)
   }
 
+  doomed() {
+    return this.health - this.incomingDamage <= 0
+  }
+
   dead() {
-    return this.fadeValue < 0
+    return this.fadeValue <= 0
   }
 
   update() {
@@ -44,6 +54,5 @@ class Ship extends Circle {
 
   show() {
     this.circleDiv.position(this.pos.x, this.pos.y)
-    this.circleDiv
   }
 }
