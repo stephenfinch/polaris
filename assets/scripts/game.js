@@ -1,9 +1,11 @@
 class Game {
   constructor() {
     this.polaris = new Polaris()
+    this.shop = new Shop()
     this.ships = []
     this.activeShips
     this.cash = 0
+    updateUI(this)
   }
 
   updateCash() {
@@ -33,9 +35,10 @@ class Game {
   }
 
   buyReload() {
-    if (this.cash >= 2) {
+    if (this.cash >= this.shop.reloadPrice) {
       this.polaris.upgradeReload()
-      this.cash -= 2
+      this.cash -= this.shop.reloadPrice
+      this.shop.increaseReloadPrice()
     }
 
     this.updateCash()
@@ -45,6 +48,7 @@ class Game {
     this.updateCash()
     this.updateShips()
     this.polaris.update(this.activeShips)
+    updateUI(this)
   }
 
   show() {
