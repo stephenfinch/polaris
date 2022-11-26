@@ -43,6 +43,7 @@ class Polaris extends Circle {
   }
 
   updateBullets() {
+    this.bullets = this.bullets.filter((bullet) => bullet.active)
     this.bullets.forEach((bullet) => {
       bullet.update()
       bullet.show()

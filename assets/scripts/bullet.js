@@ -13,6 +13,7 @@ class Bullet extends Circle {
     if (this.collision(this.target.pos.x, this.target.pos.y, this.target.r, this.r)) {
       this.target.takeHit(this.damage)
       this.active = false
+      this.circleDiv.remove()
     }
   }
 
@@ -24,12 +25,8 @@ class Bullet extends Circle {
     this.checkForHit()
   }
 
-  fade() {
-    this.circleDiv.remove()
-  }
-
   update() {
-    this.active ? this.move() : this.fade()
+    this.move()
   }
 
   show() {
