@@ -3,11 +3,22 @@ class Ship extends Circle {
     super()
     this.active = true
     this.circleDiv.addClass('ship')
-    this.pos = createVector(random(0, width), random(0, height))
+    this.pos = this.startingVector()
     this.r = 7
     this.health = 1
     this.incomingDamage = 0
     this.fadeValue = 1
+  }
+
+  startingVector() {
+    const startingOptions = [
+      createVector(width + 10, random(height)),
+      createVector(-10, random(height)),
+      createVector(random(width), height + 10),
+      createVector(random(width), -10),
+    ]
+
+    return startingOptions[Math.floor(Math.random() * startingOptions.length)]
   }
 
   takeHit(damage) {
@@ -53,6 +64,8 @@ class Ship extends Circle {
   }
 
   show() {
-    this.circleDiv.position(this.pos.x, this.pos.y)
+    if (this.pos.x < width - this.r && this.pos.x > 0 + this.r && this.pos.y < height - this.r && this.pos.y > 0 + this.r) {
+      this.circleDiv.position(this.pos.x, this.pos.y)
+    }
   }
 }
