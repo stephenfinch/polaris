@@ -23,7 +23,7 @@ function buyDamage() {
 window.addEventListener('DOMContentLoaded', (_event) => {
   const button = document.getElementById('full-screen')
   button.addEventListener('click', () => {
-    document.body.requestFullscreen()
+    toggleFullScreen()
   })
 })
 
@@ -32,6 +32,7 @@ function handleBannerClick() {
     game.clear()
     game = new Game()
   }
+
   loop()
 
   document.getElementById('banner').classList.add('banner-fade')
