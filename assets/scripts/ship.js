@@ -5,6 +5,7 @@ class Ship extends Circle {
     this.circleDiv.addClass('ship')
     this.pos = this.startingVector()
     this.r = 7
+    this.speed = 1
     this.health = 1
     this.incomingDamage = 0
     this.reward = 1
@@ -38,7 +39,7 @@ class Ship extends Circle {
   move() {
     const center = createVector(width / 2, height / 2)
     const vel = center.sub(this.pos)
-    vel.setMag(1)
+    vel.setMag(this.speed)
     this.pos.add(vel)
   }
 

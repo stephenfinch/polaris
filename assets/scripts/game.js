@@ -6,7 +6,6 @@ class Game {
     this.ships = []
     this.activeShips
     this.isOver = false
-    this.wave = 1
     this.cash = 0
     updateUI(this)
   }
