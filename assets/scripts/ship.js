@@ -69,10 +69,4 @@ class Ship extends Circle {
   update() {
     this.move()
   }
-
-  show() {
-    if (this.pos.x < width - this.r && this.pos.x > 0 + this.r && this.pos.y < height - this.r && this.pos.y > 0 + this.r) {
-      this.circleDiv.position(this.pos.x, this.pos.y)
-    }
-  }
 }

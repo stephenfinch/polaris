@@ -22,14 +22,10 @@ class Bullet extends Circle {
     const vel = setpoint.sub(this.pos)
     vel.setMag(3)
     this.pos.add(vel)
-    this.checkForHit()
   }
 
   update() {
     this.move()
-  }
-
-  show() {
-    this.circleDiv.position(this.pos.x, this.pos.y)
+    this.checkForHit()
   }
 }
