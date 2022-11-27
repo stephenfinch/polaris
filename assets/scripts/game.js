@@ -2,6 +2,7 @@ class Game {
   constructor() {
     this.polaris = new Polaris()
     this.shop = new Shop(this)
+    this.wave = new Wave()
     this.ships = []
     this.activeShips
     this.isOver = false
