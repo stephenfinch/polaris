@@ -7,14 +7,23 @@ class Bullet extends Circle {
     this.target = target
     this.damage = damage
     this.active = true
+    this.fadeAnimationLength = 100
   }
 
   checkForHit() {
     if (this.collision(this.target.pos.x, this.target.pos.y, this.target.r, this.r)) {
       this.target.takeHit(this.damage)
       this.active = false
-      this.circleDiv.remove()
+      this.fade()
     }
+  }
+
+  fade() {
+    this.circleDiv.addClass('fade-bullet')
+
+    window.setTimeout(() => {
+      this.clear()
+    }, this.fadeAnimationLength)
   }
 
   move() {
