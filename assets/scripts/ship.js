@@ -44,7 +44,7 @@ class Ship extends Circle {
   }
 
   fade() {
-    this.moneyDiv = createDiv('$1')
+    this.moneyDiv = createDiv(`$${this.reward}`)
     this.moneyDiv.addClass('money')
     this.moneyDiv.addClass('center')
     this.moneyDiv.position(this.pos.x, this.pos.y)
