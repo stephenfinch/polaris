@@ -96,3 +96,48 @@
     height: 42px;
   }
 }
+
+.fade-fast-ship {
+  animation: fade-fast-ship 750ms forwards;
+  -webkit-animation: fade-fast-ship 750ms forwards;
+}
+
+@keyframes fade-fast-ship {
+  from {
+    background: rgba(215, 65, 65, 0.25);
+    border: 1px solid rgba(215, 65, 65, 1);
+    box-shadow: 0px 0px 25px 10px rgba(215, 65, 65, 0.25);
+
+    width: 10px;
+    height: 10px;
+  }
+
+  to {
+    background: rgba(215, 65, 65, 0);
+    border: 1px solid rgba(215, 65, 65, 0);
+    box-shadow: 0px 0px 25px 10px rgba(215, 65, 65, 0);
+
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@-webkit-keyframes fade-fast-ship {
+  from {
+    background: rgba(215, 65, 65, 0.25);
+    border: 1px solid rgba(215, 65, 65, 1);
+    box-shadow: 0px 0px 25px 10px rgba(215, 65, 65, 0.25);
+
+    width: 10px;
+    height: 10px;
+  }
+
+  to {
+    background: rgba(215, 65, 65, 0);
+    border: 1px solid rgba(215, 65, 65, 0);
+    box-shadow: 0px 0px 25px 10px rgba(215, 65, 65, 0);
+
+    width: 30px;
+    height: 30px;
+  }
+}

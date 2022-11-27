@@ -6,5 +6,6 @@ class FastShip extends Ship {
     this.speed = 2.25
     this.health = 0.9
     this.reward = 2
+    this.shipType = 'fast-ship'
   }
 }

@@ -10,6 +10,7 @@ class Ship extends Circle {
     this.incomingDamage = 0
     this.reward = 1
     this.fadeAnimationLength = 1000
+    this.shipType = 'ship'
   }
 
   startingVector() {
@@ -49,7 +50,7 @@ class Ship extends Circle {
     this.moneyDiv.addClass('center')
     this.moneyDiv.position(this.pos.x, this.pos.y)
     this.moneyDiv.addClass('fade')
-    this.circleDiv.addClass('fade-ship')
+    this.circleDiv.addClass(`fade-${this.shipType}`)
 
     window.setTimeout(() => {
       this.clear()
