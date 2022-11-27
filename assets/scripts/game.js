@@ -8,6 +8,11 @@ class Game {
     this.isOver = false
     this.cash = 0
     updateUI(this)
+
+    this.spawnRate = 4
+    window.setInterval(() => {
+      this.spawnRate += 1
+    }, 100000)
   }
 
   updateCash() {
@@ -22,12 +27,12 @@ class Game {
     this.ships = this.ships.filter((ship) => !ship.dead)
     this.activeShips = this.ships.filter((ship) => !ship.doomed())
 
-    if (this.ships.length < 5) {
+    if (this.ships.length < this.spawnRate) {
       this.ships.push(new Ship())
-      if (random() < 0.1) {
+      if (random() < 0.1 + this.spawnRate / 20) {
         this.ships.push(new FastShip())
       }
-      if (random() < 0.05) {
+      if (random() < 0.05 + this.spawnRate / 20) {
         this.ships.push(new HeavyShip())
       }
     }
