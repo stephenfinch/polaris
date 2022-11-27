@@ -24,8 +24,8 @@
 }
 
 .fade {
-  animation: fade 2s forwards ease-out;
-  -webkit-animation: fade 2s forwards ease-out;
+  animation: fade 1s forwards ease-out;
+  -webkit-animation: fade 1s forwards ease-out;
 }
 
 @keyframes fade {

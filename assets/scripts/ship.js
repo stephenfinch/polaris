@@ -1,13 +1,14 @@
 class Ship extends Circle {
   constructor() {
     super()
-    this.active = true
+    this.dead = false
     this.circleDiv.addClass('ship')
     this.pos = this.startingVector()
     this.r = 7
     this.health = 1
     this.incomingDamage = 0
     this.reward = 1
+    this.fadeAnimationLength = 1000
   }
 
   startingVector() {
@@ -25,11 +26,8 @@ class Ship extends Circle {
     this.health -= damage
     this.incomingDamage -= damage
     if (this.health <= 0) {
-      this.active = false
-      this.moneyDiv = createDiv('$1')
-      this.moneyDiv.addClass('money')
-      this.moneyDiv.addClass('center')
-      this.moneyDiv.position(this.pos.x, this.pos.y)
+      this.dead = true
+      this.fade()
     }
   }
 
@@ -45,12 +43,16 @@ class Ship extends Circle {
   }
 
   fade() {
+    this.moneyDiv = createDiv('$1')
+    this.moneyDiv.addClass('money')
+    this.moneyDiv.addClass('center')
+    this.moneyDiv.position(this.pos.x, this.pos.y)
     this.moneyDiv.addClass('fade')
     this.circleDiv.addClass('fade-ship')
 
-    if (Number(this.moneyDiv.style('opacity')) <= 0) {
-      this.dead = true
-    }
+    window.setTimeout(() => {
+      this.clear()
+    }, this.fadeAnimationLength)
   }
 
   doomed() {
@@ -59,13 +61,11 @@ class Ship extends Circle {
 
   clear() {
     this.circleDiv.remove()
-    this.moneyDiv.remove()
+    this.moneyDiv?.remove()
   }
 
   update() {
-    this.active ? this.move() : this.fade()
-
-    if (this.dead) this.clear()
+    this.move()
   }
 
   show() {
