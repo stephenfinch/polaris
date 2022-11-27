@@ -20,7 +20,10 @@ class Polaris extends Circle {
     let nextTarget = ships[0]
 
     ships.forEach((ship) => {
-      if (this.distance(nextTarget.pos.x, nextTarget.pos.y) / nextTarget.speed > this.distance(ship.pos.x, ship.pos.y) / ship.speed) {
+      const shipDistance = this.distance(ship.pos.x, ship.pos.y)
+      if (shipDistance > this.range) return
+
+      if (this.distance(nextTarget.pos.x, nextTarget.pos.y) / nextTarget.speed > shipDistance / ship.speed) {
         nextTarget = ship
       }
     })
