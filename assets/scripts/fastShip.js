@@ -7,5 +7,6 @@ class FastShip extends Ship {
     this.health = 0.9
     this.reward = 2
     this.shipType = 'fast-ship'
+    this.fadeAnimationLength = 750
   }
 }

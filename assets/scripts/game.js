@@ -24,8 +24,11 @@ class Game {
 
     if (this.ships.length < 5) {
       this.ships.push(new Ship())
-      if (random() < 0.2) {
+      if (random() < 0.1) {
         this.ships.push(new FastShip())
+      }
+      if (random() < 0.05) {
+        this.ships.push(new HeavyShip())
       }
     }
 
