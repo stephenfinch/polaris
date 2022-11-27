@@ -24,6 +24,9 @@ class Game {
 
     if (this.ships.length < 5) {
       this.ships.push(new Ship())
+      if (random() < 0.2) {
+        this.ships.push(new FastShip())
+      }
     }
 
     this.ships.forEach((ship) => {
