@@ -1,10 +1,10 @@
 class Game {
-  constructor() {
+  constructor(startingCash = 0) {
     this.polaris = new Polaris()
     this.shop = new Shop(this)
     this.wave = new Wave(1)
     this.isOver = false
-    this.cash = 0
+    this.cash = startingCash
     updateUI(this)
   }
 
@@ -15,6 +15,7 @@ class Game {
   updateWave() {
     if (!this.wave.isRunning) {
       this.wave = new Wave(this.wave.number + 1)
+      localStorage.setItem('highestWave', Math.max(localStorage.getItem('highestWave'), this.wave.number))
       this.wave.start()
     }
 

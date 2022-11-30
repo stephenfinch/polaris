@@ -3,7 +3,11 @@ let game, banner
 function setup() {
   createCanvas(windowWidth, windowHeight)
 
-  game = new Game()
+  if (!localStorage.getItem('highestWave')) {
+    localStorage.setItem('highestWave', 1)
+  }
+
+  game = new Game(localStorage.getItem('highestWave'))
   noLoop()
 }
 
@@ -34,7 +38,7 @@ window.addEventListener('DOMContentLoaded', (_event) => {
 function handleBannerClick() {
   if (game.isOver) {
     game.clear()
-    game = new Game()
+    game = new Game(localStorage.getItem('highestWave'))
   }
 
   game.start()
@@ -46,6 +50,7 @@ function handleBannerClick() {
 function openModal() {
   noLoop()
   document.getElementById('settings').classList.remove('hidden')
+  document.getElementById('highest-wave').textContent = `Highest Wave: ${localStorage.getItem('highestWave')}`
 }
 
 function closeSettings() {
