@@ -16,14 +16,19 @@ class Polaris extends Circle {
     return this._readyToShoot
   }
 
+  timeToKill(ship) {
+    return ((ship.health - ship.incomingDamage) * 1000) / this.reload
+  }
+
   getNextTarget(ships) {
     let nextTarget = ships[0]
 
     ships.forEach((ship) => {
+      if (!this.targetInRange(ship)) return
       const shipDistance = this.distance(ship.pos.x, ship.pos.y)
-      if (shipDistance > this.range) return
+      const nextTargetDistance = this.distance(nextTarget.pos.x, nextTarget.pos.y)
 
-      if (this.distance(nextTarget.pos.x, nextTarget.pos.y) / nextTarget.speed > shipDistance / ship.speed) {
+      if (nextTargetDistance / nextTarget.speed + this.timeToKill(nextTarget) > shipDistance / ship.speed + this.timeToKill(ship)) {
         nextTarget = ship
       }
     })
