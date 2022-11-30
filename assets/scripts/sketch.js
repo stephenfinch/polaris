@@ -33,6 +33,7 @@ function handleBannerClick() {
     game = new Game()
   }
 
+  game.start()
   loop()
 
   document.getElementById('banner').classList.add('banner-fade')

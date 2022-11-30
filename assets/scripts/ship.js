@@ -1,7 +1,7 @@
 class Ship extends Circle {
   constructor() {
     super()
-    this.dead = false
+    this._dead = false
     this.circleDiv.addClass('ship')
     this.pos = this.startingVector()
     this.r = 7
@@ -28,7 +28,7 @@ class Ship extends Circle {
     this.health -= damage
     this.incomingDamage -= damage
     if (this.health <= 0) {
-      this.dead = true
+      this._dead = true
       this.fade()
     }
   }
@@ -59,6 +59,10 @@ class Ship extends Circle {
 
   doomed() {
     return this.health - this.incomingDamage <= 0
+  }
+
+  dead() {
+    return this._dead
   }
 
   clear() {

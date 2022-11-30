@@ -2,49 +2,27 @@ class Game {
   constructor() {
     this.polaris = new Polaris()
     this.shop = new Shop(this)
-    this.wave = new Wave()
-    this.ships = []
-    this.activeShips
+    this.wave = new Wave(1)
     this.isOver = false
     this.cash = 0
     updateUI(this)
-
-    this.spawnRate = 4
-    window.setInterval(() => {
-      this.spawnRate += 1
-    }, 100000)
   }
 
-  updateCash() {
-    this.ships.forEach((ship) => {
-      if (ship.dead) this.cash += ship.reward
-    })
-
-    document.getElementById('cash').textContent = `Cash: ${this.cash}`
+  updateCash(newCash) {
+    if (newCash) this.cash += newCash
   }
 
-  updateShips() {
-    this.ships = this.ships.filter((ship) => !ship.dead)
-    this.activeShips = this.ships.filter((ship) => !ship.doomed())
-
-    if (this.ships.length < this.spawnRate) {
-      this.ships.push(new Ship())
-      if (random() < 0.1 + this.spawnRate / 20) {
-        this.ships.push(new FastShip())
-      }
-      if (random() < 0.05 + this.spawnRate / 20) {
-        this.ships.push(new HeavyShip())
-      }
+  updateWave() {
+    if (!this.wave.isRunning) {
+      this.wave = new Wave(this.wave.number + 1)
+      this.wave.start()
     }
 
-    this.ships.forEach((ship) => {
-      ship.update()
-      ship.show()
-    })
+    this.wave.update()
   }
 
   checkForGameOver() {
-    this.ships.forEach((ship) => {
+    this.wave.ships.forEach((ship) => {
       if (this.polaris.collision(ship.pos.x, ship.pos.y, ship.r, this.polaris.r)) {
         this.isOver = true
         noLoop()
@@ -53,15 +31,21 @@ class Game {
   }
 
   clear() {
-    this.ships.forEach((ship) => ship.clear())
+    this.wave.clear()
     this.polaris.clear()
   }
 
+  start() {
+    this.isRunning = true
+    this.wave.start()
+  }
+
   update() {
-    this.updateCash()
-    this.updateShips()
+    if (!this.isRunning) return
+
+    this.updateWave()
     this.checkForGameOver()
-    this.polaris.update(this.activeShips)
+    this.polaris.update(this.wave.activeShips)
     updateUI(this)
   }
 

@@ -1,6 +1,78 @@
 class Wave {
-  constructor() {
-    this.waveNumber = 1
-    this.ships
+  constructor(number) {
+    this.number = number
+    this.value = number * 5
+    this.shipQueue = this.draftShips()
+    this.ships = []
+    this.activeShips
+    this.duration = 2000
+
+    this.spawnRate = this.duration / this.shipQueue.length
+    this.lastSpawnTime = Date.now() - this.duration
+  }
+
+  draftShips() {
+    const queue = []
+
+    for (let i = 0; i < this.value; i++) {
+      queue.push(new Ship())
+    }
+    this._originalQueueLength = queue.length
+
+    return queue
+  }
+
+  spawnShip() {
+    this.ships.push(this.shipQueue.pop())
+    this.lastSpawnTime = Date.now()
+  }
+
+  updateShips() {
+    this.ships = this.ships.filter((ship) => !ship.dead())
+    this.activeShips = this.ships.filter((ship) => !ship.doomed())
+
+    this.ships.forEach((ship) => {
+      ship.update()
+      ship.show()
+    })
+
+    if (this.shipQueue.length > 0 && Date.now() - this.lastSpawnTime >= this.spawnRate) {
+      this.spawnShip()
+    }
+  }
+
+  updateCash() {
+    this.ships.forEach((ship) => {
+      if (ship.dead()) game.updateCash(ship.reward)
+    })
+  }
+
+  checkForWaveOver() {
+    if (this.shipQueue.length + this.ships.length === 0) {
+      this.isRunning = false
+    }
+  }
+
+  percentLeft() {
+    return ((this._originalQueueLength - (this.shipQueue.length + this.ships.length)) / this._originalQueueLength) * 100
+  }
+
+  clear() {
+    this.ships.forEach((ship) => ship.clear())
+  }
+
+  start() {
+    this.isRunning = true
+    document.getElementById('wave-line').style.width = '100%'
+  }
+
+  update() {
+    if (!this.isRunning) return
+
+    this.updateCash()
+    this.updateShips()
+    this.checkForWaveOver()
+
+    document.getElementById('wave-line').style.width = `calc(100% - ${this.percentLeft()}%)`
   }
 }
