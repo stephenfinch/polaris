@@ -1,12 +1,12 @@
 class Wave {
   constructor(number) {
     this.number = number
-    this.value = number * 2 + 10
-    this.difficulty = number / 25
+    this.value = number * 3 + 2
+    this.difficulty = number / 30
     this.shipQueue = this.draftShips()
     this.ships = []
     this.activeShips
-    this.duration = 30000
+    this.duration = 20000
 
     this.spawnRate = this.duration / this.shipQueue.length
     this.lastSpawnTime = Date.now() - this.duration

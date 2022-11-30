@@ -7,7 +7,7 @@ class Polaris extends Circle {
     this.reload = 1
     this.lastShot = Date.now()
     this.bullets = []
-    this.range = 100
+    this.range = 125
 
     this._readyToShoot = true
   }
