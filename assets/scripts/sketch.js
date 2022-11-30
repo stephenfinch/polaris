@@ -51,6 +51,7 @@ function openModal() {
   noLoop()
   document.getElementById('settings').classList.remove('hidden')
   document.getElementById('highest-wave').textContent = `Highest Wave: ${localStorage.getItem('highestWave')}`
+  document.getElementById('starting-cash').textContent = `(starting cash: $${localStorage.getItem('highestWave')})`
 }
 
 function closeSettings() {

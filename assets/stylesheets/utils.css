@@ -6,6 +6,10 @@
   flex-direction: column;
 }
 
+.items-center {
+  align-items: center;
+}
+
 .center {
   transform: translate(-50%, -50%);
 }
