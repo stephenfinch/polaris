@@ -6,6 +6,8 @@ class Shop {
     this.reloadPriceIncrement = 2
     this.damagePrice = 1
     this.damagePriceIncrement = 2
+    this.rangePrice = 1
+    this.rangePriceIncrement = 2
   }
 
   canBuyReload() {
@@ -31,6 +33,19 @@ class Shop {
       this.game.cash -= this.damagePrice
       this.damagePrice = Math.round(this.damagePrice * this.damagePriceIncrement)
       this.damagePriceIncrement = Math.max(1.1, this.damagePriceIncrement * 0.9)
+    }
+  }
+
+  canBuyRange() {
+    return this.game.cash >= this.rangePrice
+  }
+
+  buyRange() {
+    if (this.canBuyRange()) {
+      this.polaris.range += 1
+      this.game.cash -= this.rangePrice
+      this.rangePrice = Math.round(this.rangePrice * this.rangePriceIncrement)
+      this.rangePriceIncrement = Math.max(1.1, this.rangePriceIncrement * 0.9)
     }
   }
 }

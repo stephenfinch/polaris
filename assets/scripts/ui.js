@@ -19,6 +19,16 @@ function updateUI(game) {
     </div>
   `
 
+  const rangeButton = document.getElementById('range-button')
+  game.shop.canBuyRange() ? rangeButton.classList.remove('btn-disabled') : rangeButton.classList.add('btn-disabled')
+  rangeButton.innerHTML = `
+    <span>Range</span>
+    <div class="flex col">
+      <span class="small-text">${game.polaris.range.toFixed(0)}</span>
+      <span class="small-text">$${game.shop.rangePrice.toFixed(0)}</span>
+    </div>
+  `
+
   document.getElementById('cash').textContent = `Cash: $${game.cash}`
   document.getElementById('wave').textContent = `Wave: ${game.wave.number}`
 

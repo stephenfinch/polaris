@@ -20,6 +20,10 @@ function buyDamage() {
   game.shop.buyDamage()
 }
 
+function buyRange() {
+  game.shop.buyRange()
+}
+
 window.addEventListener('DOMContentLoaded', (_event) => {
   const button = document.getElementById('full-screen')
   button.addEventListener('click', () => {
