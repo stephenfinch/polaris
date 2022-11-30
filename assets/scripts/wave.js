@@ -5,7 +5,7 @@ class Wave {
     this.shipQueue = this.draftShips()
     this.ships = []
     this.activeShips
-    this.duration = 2000
+    this.duration = 30000
 
     this.spawnRate = this.duration / this.shipQueue.length
     this.lastSpawnTime = Date.now() - this.duration
