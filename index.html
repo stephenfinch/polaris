@@ -5,6 +5,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Polaris">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
   <link rel="stylesheet" href="assets/stylesheets/main.css">
   <link rel="stylesheet" href="assets/stylesheets/animations.css">
   <link rel="stylesheet" href="assets/stylesheets/button.css">
@@ -65,9 +71,11 @@
       </div>
     </button>
   </div>
-  <div id="settings" class="settings hidden">
-    <button id="full-screen">Toggle Full Screen</button>
-    <button onclick="closeSettings()">Close</button>
+  <div id="settings" class="shade hidden" onclick="closeSettings()">
+    <div class="settings">
+      <button id="full-screen" class="btn">Toggle Full Screen</button>
+      <button onclick="closeSettings()" class="btn">Close</button>
+    </div>
   </div>
   <div id="banner" class="banner" onclick="handleBannerClick()">
     <h2 class="banner-title">Defend the star Polaris</h2>

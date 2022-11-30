@@ -73,10 +73,21 @@ body {
   height: 0px;
 }
 
+.shade {
+  z-index: 110;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+}
+
 .settings {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   background: #1C4039;
+  box-shadow: 0px 0px 25px 1px rgba(255, 255, 255, 0.25);
   opacity: 0.9;
   width: 80%;
   height: 50%;
@@ -84,5 +95,5 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 100;
+  z-index: 120;
 }
