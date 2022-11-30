@@ -38,3 +38,13 @@ function handleBannerClick() {
 
   document.getElementById('banner').classList.add('banner-fade')
 }
+
+function openModal() {
+  noLoop()
+  document.getElementById('settings').classList.remove('hidden')
+}
+
+function closeSettings() {
+  loop()
+  document.getElementById('settings').classList.add('hidden')
+}

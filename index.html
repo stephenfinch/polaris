@@ -34,7 +34,9 @@
   <div class="ui header">
     <span id="cash">Cash: $0</span>
     <h1 class="title">Polaris</h1>
-    <img src="assets/icons/settings.svg" class="icon" alt="settings">
+    <button class="btn" onclick="openModal()">
+      <img src="assets/icons/settings.svg" class="icon" alt="settings">
+    </button>
   </div>
   <div class="wave-display">
     <span id="wave" class="soft-text small-text">Wave: 1</span>
@@ -55,7 +57,10 @@
         <span class="small-text">$1</span>
       </div>
     </button>
-    <button id="full-screen">Full Screen</button>
+  </div>
+  <div id="settings" class="settings hidden">
+    <button id="full-screen">Toggle Full Screen</button>
+    <button onclick="closeSettings()">Close</button>
   </div>
   <div id="banner" class="banner" onclick="handleBannerClick()">
     <h2 class="banner-title">Defend the star Polaris</h2>
