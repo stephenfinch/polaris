@@ -1,12 +1,12 @@
 class Ship extends Circle {
-  constructor() {
+  constructor(difficulty) {
     super()
     this._dead = false
     this.circleDiv.addClass('ship')
     this.pos = this.startingVector()
     this.r = 7
     this.speed = 1
-    this.health = 1
+    this.health = 0.9 + difficulty
     this.incomingDamage = 0
     this.reward = 1
     this.fadeAnimationLength = 1000

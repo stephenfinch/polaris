@@ -2,10 +2,11 @@ class Wave {
   constructor(number) {
     this.number = number
     this.value = number * 2 + 10
+    this.difficulty = number / 25
     this.shipQueue = this.draftShips()
     this.ships = []
     this.activeShips
-    this.duration = 20000
+    this.duration = 30000
 
     this.spawnRate = this.duration / this.shipQueue.length
     this.lastSpawnTime = Date.now() - this.duration
@@ -14,20 +15,20 @@ class Wave {
   draftShips() {
     const queue = []
 
-    for (let i = 1; i < random(this.value * 0.3); i++) {
-      const fastShip = new FastShip()
+    for (let i = 1; i < random(this.difficulty, this.value * 0.3); i++) {
+      const fastShip = new FastShip(this.difficulty)
       queue.push(fastShip)
       this.value -= fastShip.reward
     }
 
-    for (let i = 1; i < random(this.value * 0.2); i++) {
-      const heavyShip = new HeavyShip()
+    for (let i = 1; i < random(this.difficulty, this.value * 0.2); i++) {
+      const heavyShip = new HeavyShip(this.difficulty)
       queue.push(heavyShip)
       this.value -= heavyShip.reward
     }
 
     for (let i = 0; i < this.value; i++) {
-      queue.push(new Ship())
+      queue.push(new Ship(this.difficulty))
     }
     this._originalQueueLength = queue.length
 
