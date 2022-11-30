@@ -20,14 +20,17 @@ function updateUI(game) {
   `
 
   document.getElementById('cash').textContent = `Cash: $${game.cash}`
+  document.getElementById('wave').textContent = `Wave: ${game.wave.number}`
 
   if (game.isOver) {
     const banner = document.getElementById('banner')
     banner.classList.remove('banner-fade')
     banner.innerHTML = `
       <h2 class="banner-title">Game Over</h2>
-      <span class="soft-text">Wave: ${game.wave.waveNumber}</span>
+      <span class="soft-text">Wave: ${game.wave.number}</span>
       <span class="soft-text pulse">(click to play again)</span>
     `
   }
 }
+
+// TODO: store the elements

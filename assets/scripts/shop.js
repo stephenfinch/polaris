@@ -19,8 +19,6 @@ class Shop {
       this.reloadPrice = Math.round(this.reloadPrice * this.reloadPriceIncrement)
       this.reloadPriceIncrement = Math.max(1.1, this.reloadPriceIncrement * 0.9)
     }
-
-    game.updateCash()
   }
 
   canBuyDamage() {
@@ -34,7 +32,5 @@ class Shop {
       this.damagePrice = Math.round(this.damagePrice * this.damagePriceIncrement)
       this.damagePriceIncrement = Math.max(1.1, this.damagePriceIncrement * 0.9)
     }
-
-    game.updateCash()
   }
 }
