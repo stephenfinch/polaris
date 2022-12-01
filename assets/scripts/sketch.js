@@ -25,7 +25,7 @@ function setup() {
   }
   document.getElementById('starting-wave').textContent = `Starting Wave: ${localStorage.getItem('startingWave')}`
 
-  game = new Game(localStorage.getItem('highestWave'), Number(localStorage.getItem('startingWave')))
+  game = new Game(getStartingCash(), Number(localStorage.getItem('startingWave')))
   noLoop()
 }
 
@@ -56,7 +56,7 @@ window.addEventListener('DOMContentLoaded', (_event) => {
 function handleBannerClick() {
   if (game.isOver) {
     game.clear()
-    game = new Game(localStorage.getItem('highestWave'), Number(localStorage.getItem('startingWave')))
+    game = new Game(getStartingCash(), Number(localStorage.getItem('startingWave')))
   }
 
   game.start()
@@ -71,7 +71,7 @@ function openModal() {
   playSound(menuAudio)
   document.getElementById('settings').classList.remove('hidden')
   document.getElementById('highest-wave').textContent = `Highest Wave: ${localStorage.getItem('highestWave')}`
-  document.getElementById('starting-cash').textContent = `(starting cash: $${Number(localStorage.getItem('highestWave')) * 10})`
+  document.getElementById('starting-cash').textContent = `(starting cash: $${getStartingCash()})`
 }
 
 function closeSettings() {
@@ -87,6 +87,16 @@ function stopPropagation(event) {
 function toggleMusic() {
   localStorage.setItem('polarisMusic', !JSON.parse(localStorage.getItem('polarisMusic')))
   playSound(menuAudio)
+}
+
+function getStartingCash() {
+  let cash = Number(localStorage.getItem('highestWave')) * 10
+
+  for (let i = 1; i < Number(localStorage.getItem('startingWave')); i++) {
+    cash += i * 3 + 2
+  }
+
+  return cash
 }
 
 function playSound(audio) {
@@ -137,14 +147,24 @@ function minusStartingWave() {
   } else {
     document.getElementById('minus-starting-wave').setAttribute('disabled', true)
   }
+
+  document.getElementById('starting-cash').textContent = `(starting cash: $${getStartingCash()})`
+  game.clear()
+  game = new Game(getStartingCash(), Number(localStorage.getItem('startingWave')))
+  game.start()
 }
 
 function addStartingWave() {
-  if (Number(localStorage.getItem('startingWave')) < Number(localStorage.getItem('highestWave') - 5)) {
+  if (Number(localStorage.getItem('startingWave')) < Number(localStorage.getItem('highestWave')) - 5) {
     localStorage.setItem('startingWave', Number(localStorage.getItem('startingWave')) + 1)
     document.getElementById('starting-wave').textContent = `Starting Wave: ${localStorage.getItem('startingWave')}`
     document.getElementById('minus-starting-wave').removeAttribute('disabled')
   } else {
     document.getElementById('add-starting-wave').setAttribute('disabled', true)
   }
+
+  document.getElementById('starting-cash').textContent = `(starting cash: $${getStartingCash()})`
+  game.clear()
+  game = new Game(getStartingCash(), Number(localStorage.getItem('startingWave')))
+  game.start()
 }
