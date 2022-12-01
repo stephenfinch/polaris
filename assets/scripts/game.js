@@ -4,7 +4,7 @@ class Game {
     this.shop = new Shop(this)
     this.wave = new Wave(1)
     this.isOver = false
-    this.cash = startingCash
+    this.cash = Number(startingCash)
     updateUI(this)
   }
 
