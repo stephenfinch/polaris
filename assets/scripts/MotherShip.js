@@ -12,7 +12,7 @@ class MotherShip extends Ship {
   }
 
   startingVector() {
-    const startingOptions = [createVector(width + 30, random(-30, 30) + height / 2), createVector(-30, random(-30, 30) + height / 2)]
+    const startingOptions = [createVector(width + 30, random(-60, 60) + height / 2), createVector(-30, random(-60, 60) + height / 2)]
 
     return startingOptions[Math.floor(Math.random() * startingOptions.length)]
   }
