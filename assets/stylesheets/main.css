@@ -84,7 +84,8 @@ body {
 .settings {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  padding: 2rem 0;
+  gap: 2rem;
   align-items: center;
   background: #1C4039;
   box-shadow: 0px 0px 25px 1px rgba(255, 255, 255, 0.25);
@@ -96,12 +97,17 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 120;
+  overflow-y: scroll;
+}
+
+.settings-footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
 }
 
 .error-log-button {
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
   font-size: 0.5rem;
   opacity: 0.5;
   background: transparent;

@@ -70,7 +70,7 @@ class Polaris extends Circle {
       this.shoot(nextTarget)
     }
 
-    if (Date.now() - this.lastShot > 1000 / this.reload) {
+    if ((Date.now() - this.lastShot) * Number(localStorage.getItem('gameSpeed')) > 1000 / this.reload) {
       this._readyToShoot = true
     }
 

@@ -78,11 +78,18 @@
         <h2 id="highest-wave">Highest Wave: 1</h2>
         <span id="starting-cash" class="soft-text small-text">(starting cash: $1)</span>
       </div>
+      <div class="flex items-center gap-sm">
+        <button id="minus-game-speed" class="btn" onclick="minusGameSpeed()">-</button>
+        <span id="game-speed">Game Speed: 1</span>
+        <button id="add-game-speed" class="btn" onclick="addGameSpeed()">+</button>
+      </div>
       <button id="full-screen" class="btn">Toggle Full Screen</button>
       <button class="btn" onclick="toggleMusic()">Toggle Music</button>
       <a href="https://www.buymeacoffee.com/stephenfinch" target="_blank" rel="noopener" class="btn">Support my work</a>
-      <button onclick="closeSettings()" class="btn">Close</button>
-      <button onclick="copyErrorLog()" class="error-log-button">Copy Error Log</button>
+      <div class="settings-footer">
+        <button onclick="copyErrorLog()" class="error-log-button">Copy Error Log</button>
+        <button onclick="closeSettings()" class="btn">Close</button>
+      </div>
     </div>
   </div>
   <div id="banner" class="banner" onclick="handleBannerClick()">

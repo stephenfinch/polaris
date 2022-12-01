@@ -10,6 +10,10 @@
   align-items: center;
 }
 
+.gap-sm {
+  gap: 1rem;
+}
+
 .center {
   transform: translate(-50%, -50%);
 }

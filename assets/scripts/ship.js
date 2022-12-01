@@ -40,7 +40,7 @@ class Ship extends Circle {
   move() {
     const center = createVector(width / 2, height / 2)
     const vel = center.sub(this.pos)
-    vel.setMag(this.speed)
+    vel.setMag(this.speed * Number(localStorage.getItem('gameSpeed')))
     this.pos.add(vel)
   }
 

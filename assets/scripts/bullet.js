@@ -29,7 +29,7 @@ class Bullet extends Circle {
   move() {
     const setpoint = this.target.pos.copy()
     const vel = setpoint.sub(this.pos)
-    vel.setMag(3)
+    vel.setMag(3 * Number(localStorage.getItem('gameSpeed')))
     this.pos.add(vel)
   }
 

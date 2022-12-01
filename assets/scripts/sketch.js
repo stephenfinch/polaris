@@ -15,6 +15,11 @@ function setup() {
     localStorage.setItem('polarisMusic', true)
   }
 
+  if (!Number(localStorage.getItem('gameSpeed'))) {
+    localStorage.setItem('gameSpeed', 1)
+  }
+  document.getElementById('game-speed').textContent = `Game Speed: ${localStorage.getItem('gameSpeed')}`
+
   game = new Game(localStorage.getItem('highestWave'))
   noLoop()
 }
@@ -97,4 +102,24 @@ window.onerror = (error, url, line) => {
 
 function copyErrorLog() {
   navigator.clipboard.writeText(JSON.stringify(errorLog))
+}
+
+function minusGameSpeed() {
+  if (Number(localStorage.getItem('gameSpeed')) > 0.25) {
+    localStorage.setItem('gameSpeed', Number(localStorage.getItem('gameSpeed')) - 0.25)
+    document.getElementById('game-speed').textContent = `Game Speed: ${localStorage.getItem('gameSpeed')}`
+    document.getElementById('add-game-speed').removeAttribute('disabled')
+  } else {
+    document.getElementById('minus-game-speed').setAttribute('disabled', true)
+  }
+}
+
+function addGameSpeed() {
+  if (Number(localStorage.getItem('gameSpeed')) < 2.5) {
+    localStorage.setItem('gameSpeed', Number(localStorage.getItem('gameSpeed')) + 0.25)
+    document.getElementById('game-speed').textContent = `Game Speed: ${localStorage.getItem('gameSpeed')}`
+    document.getElementById('minus-game-speed').removeAttribute('disabled')
+  } else {
+    document.getElementById('add-game-speed').setAttribute('disabled', true)
+  }
 }

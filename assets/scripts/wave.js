@@ -49,7 +49,7 @@ class Wave {
       ship.show()
     })
 
-    if (this.shipQueue.length > 0 && Date.now() - this.lastSpawnTime >= this.spawnRate) {
+    if (this.shipQueue.length > 0 && (Date.now() - this.lastSpawnTime) * Number(localStorage.getItem('gameSpeed')) >= this.spawnRate) {
       this.spawnShip()
     }
   }
