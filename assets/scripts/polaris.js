@@ -17,7 +17,7 @@ class Polaris extends Circle {
   }
 
   timeToKill(ship) {
-    return ((ship.health - ship.incomingDamage) * 1000) / this.reload
+    return ((ship.health - ship.incomingDamage) / this.damage) * (1000 / this.reload)
   }
 
   getNextTarget(ships) {

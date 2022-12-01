@@ -72,12 +72,13 @@
     </button>
   </div>
   <div id="settings" class="shade hidden" onclick="closeSettings()">
-    <div class="settings">
+    <div class="settings" onclick="stopPropagation(event)">
       <div class="flex col items-center">
         <h2 id="highest-wave">Highest Wave: 1</h2>
         <span id="starting-cash" class="soft-text small-text">(starting cash: $1)</span>
       </div>
       <button id="full-screen" class="btn">Toggle Full Screen</button>
+      <button class="btn" onclick="toggleMusic()">Toggle Music</button>
       <button onclick="closeSettings()" class="btn">Close</button>
     </div>
   </div>

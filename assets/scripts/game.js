@@ -4,7 +4,7 @@ class Game {
     this.shop = new Shop(this)
     this.wave = new Wave(1)
     this.isOver = false
-    this.cash = Number(startingCash)
+    this.cash = Number(startingCash) * 5
     updateUI(this)
   }
 
@@ -27,6 +27,7 @@ class Game {
       if (this.polaris.collision(ship.pos.x, ship.pos.y, ship.r, this.polaris.r)) {
         this.isOver = true
         noLoop()
+        playSound(gameOverAudio)
       }
     })
   }
