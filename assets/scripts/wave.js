@@ -15,6 +15,12 @@ class Wave {
   draftShips() {
     const queue = []
 
+    for (let i = 1; i < random(this.difficulty, this.value * 0.1); i++) {
+      const motherShip = new MotherShip(this.difficulty)
+      queue.push(motherShip)
+      this.value -= motherShip.reward
+    }
+
     for (let i = 1; i < random(this.difficulty, this.value * 0.3); i++) {
       const fastShip = new FastShip(this.difficulty)
       queue.push(fastShip)
