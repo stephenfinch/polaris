@@ -7,18 +7,15 @@ class Circle {
   }
 
   collision(x, y, r1, r2) {
-    const h = r1 + r2
-
-    return h > this.distance(x, y)
+    return 0 > this.distance(x, y, r1, r2)
   }
 
-  distance(x, y) {
-    let a, b
+  distance(x, y, r1, r2) {
+    const h = r1 + r2
+    const a = this.pos.x - x
+    const b = this.pos.y - y
 
-    a = this.pos.x - x
-    b = this.pos.y - y
-
-    return Math.sqrt(a * a + b * b)
+    return Math.sqrt(a * a + b * b) - h
   }
 
   clear() {
