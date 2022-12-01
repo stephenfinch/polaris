@@ -2,6 +2,7 @@ let game, banner
 const menuAudio = new Audio(`assets/audio/menu${Math.round(Math.random(3)) + 1}.mp3`)
 const soundtrack = new Audio('assets/audio/soundtrack.mp3')
 const gameOverAudio = new Audio('assets/audio/gameOver.mp3')
+const errorLog = []
 
 function setup() {
   createCanvas(windowWidth, windowHeight)
@@ -88,4 +89,12 @@ function playSound(audio) {
     audio.loop = true
     audio.volume = 0.2
   }
+}
+
+window.onerror = (error, url, line) => {
+  errorLog.push({ acc: 'error', data: 'ERR:' + error + ' URL:' + url + ' L:' + line })
+}
+
+function copyErrorLog() {
+  navigator.clipboard.writeText(JSON.stringify(errorLog))
 }
