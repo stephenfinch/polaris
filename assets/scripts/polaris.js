@@ -2,7 +2,7 @@ class Polaris extends Circle {
   constructor() {
     super()
     this.circleDiv.addClass('polaris')
-    this.r = 20
+    this.r = 15
     this.damage = 1
     this.reload = 1
     this.lastShot = Date.now()
