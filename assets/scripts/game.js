@@ -1,10 +1,10 @@
 class Game {
-  constructor(startingCash = 0) {
+  constructor(startingCash = 0, startingWave = 1) {
     this.polaris = new Polaris()
     this.shop = new Shop(this)
-    this.wave = new Wave(1)
+    this.wave = new Wave(startingWave)
     this.isOver = false
-    this.cash = Number(startingCash) * 5
+    this.cash = Number(startingCash) * 10
     updateUI(this)
   }
 

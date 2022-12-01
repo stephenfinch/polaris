@@ -20,7 +20,12 @@ function setup() {
   }
   document.getElementById('game-speed').textContent = `Game Speed: ${localStorage.getItem('gameSpeed')}`
 
-  game = new Game(localStorage.getItem('highestWave'))
+  if (!Number(localStorage.getItem('startingWave'))) {
+    localStorage.setItem('startingWave', 1)
+  }
+  document.getElementById('starting-wave').textContent = `Starting Wave: ${localStorage.getItem('startingWave')}`
+
+  game = new Game(localStorage.getItem('highestWave'), Number(localStorage.getItem('startingWave')))
   noLoop()
 }
 
@@ -51,7 +56,7 @@ window.addEventListener('DOMContentLoaded', (_event) => {
 function handleBannerClick() {
   if (game.isOver) {
     game.clear()
-    game = new Game(localStorage.getItem('highestWave'))
+    game = new Game(localStorage.getItem('highestWave'), Number(localStorage.getItem('startingWave')))
   }
 
   game.start()
@@ -66,7 +71,7 @@ function openModal() {
   playSound(menuAudio)
   document.getElementById('settings').classList.remove('hidden')
   document.getElementById('highest-wave').textContent = `Highest Wave: ${localStorage.getItem('highestWave')}`
-  document.getElementById('starting-cash').textContent = `(starting cash: $${Number(localStorage.getItem('highestWave')) * 5})`
+  document.getElementById('starting-cash').textContent = `(starting cash: $${Number(localStorage.getItem('highestWave')) * 10})`
 }
 
 function closeSettings() {
@@ -121,5 +126,25 @@ function addGameSpeed() {
     document.getElementById('minus-game-speed').removeAttribute('disabled')
   } else {
     document.getElementById('add-game-speed').setAttribute('disabled', true)
+  }
+}
+
+function minusStartingWave() {
+  if (Number(localStorage.getItem('startingWave')) > 1) {
+    localStorage.setItem('startingWave', Number(localStorage.getItem('startingWave')) - 1)
+    document.getElementById('starting-wave').textContent = `Starting Wave: ${localStorage.getItem('startingWave')}`
+    document.getElementById('add-starting-wave').removeAttribute('disabled')
+  } else {
+    document.getElementById('minus-starting-wave').setAttribute('disabled', true)
+  }
+}
+
+function addStartingWave() {
+  if (Number(localStorage.getItem('startingWave')) < Number(localStorage.getItem('highestWave') - 5)) {
+    localStorage.setItem('startingWave', Number(localStorage.getItem('startingWave')) + 1)
+    document.getElementById('starting-wave').textContent = `Starting Wave: ${localStorage.getItem('startingWave')}`
+    document.getElementById('minus-starting-wave').removeAttribute('disabled')
+  } else {
+    document.getElementById('add-starting-wave').setAttribute('disabled', true)
   }
 }
