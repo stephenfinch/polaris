@@ -84,7 +84,6 @@ function playSound(audio) {
   gameOverAudio.pause()
 
   if (JSON.parse(localStorage.getItem('polarisMusic'))) {
-    console.log('in')
     audio.play()
     audio.loop = true
     audio.volume = 0.2
