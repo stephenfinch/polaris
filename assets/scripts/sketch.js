@@ -1,6 +1,6 @@
 let game, banner
-const menuAudio = new Audio(`assets/audio/menu${Math.round(Math.random(3)) + 1}.mp3`)
-const soundtrack = new Audio('assets/audio/soundtrack.mp3')
+const menuAudio = new Audio(`assets/audio/menu${Math.round(Math.random(2)) + 1}.mp3`)
+const soundtrack = new Audio(`assets/audio/soundtrack${Math.round(Math.random(2)) + 1}.mp3`)
 const gameOverAudio = new Audio('assets/audio/gameOver.mp3')
 const errorLog = []
 
